@@ -119,7 +119,11 @@ const genBtn = document.getElementById("genBtn");
 const localBtn = document.getElementById("localBtn");
 
 let lastGenerated = [];
-const ADMIN_UID = "ExBK4qLIOOX3PyY2u6B2TYwQ64h2";
+const ADMIN_UIDS = [ 
+  "ExBK4qLIOOX3PyY2u6B2TYwQ64h2",
+  "5miDTylkXxRNQD7b2AGvfGEXwo82",
+  "Y2mQnfZJ6lc0RVF5eDa1LczqFIp2"
+  ];
 
 // --- LOGOWANIE ---
 loginBtn.onclick = async () => {
@@ -133,10 +137,10 @@ loginBtn.onclick = async () => {
   }
 };
 
-onAuthStateChanged(auth,(user)=>{
-  if(user && user.uid===ADMIN_UID){
-    loginForm.style.display="none";
-    panel.style.display="block";
+  onAuthStateChanged(auth,(user)=>{
+  if(user && ADMIN_UIDS.includes(user.uid)){
+    loginForm.style.display = "none";
+    panel.style.display = "block";
   }
 });
 
